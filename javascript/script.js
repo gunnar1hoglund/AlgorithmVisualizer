@@ -9,14 +9,14 @@ function setup() {
   var myCanvas = createCanvas(1000, 500)
   myCanvas.parent("canvas")
   background(255, 0, 200)
- // frameRate(15);
+  frameRate(20);
 
   for(let i = 0; i < width; i++) {
-    values[i] = random(height)
+    //values[i] = random(height)
+    values[i] = noise(i/100)*height
   }
 
 }
-
 
   
 function draw() {
