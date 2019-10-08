@@ -9,14 +9,26 @@ function setup() {
   var myCanvas = createCanvas(1000, 500)
   myCanvas.parent("canvas")
   background(255, 0, 200)
+<<<<<<< HEAD
   // frameRate(15);
 
   for (let i = 0; i < width; i++) {
     values[i] = random(height)
+=======
+  frameRate(20);
+
+  for(let i = 0; i < width; i++) {
+    //values[i] = random(height)
+    values[i] = noise(i/100)*height
+>>>>>>> 0608013e91fbe49c64d87a598722047050ce6330
   }
 }
 
+<<<<<<< HEAD
 
+=======
+  
+>>>>>>> 0608013e91fbe49c64d87a598722047050ce6330
 function draw() {
   background(0, 0, 0)
 

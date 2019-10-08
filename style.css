@@ -13,3 +13,13 @@ html, body {
     /* This centers our sketch vertically. */
     align-items: center;
   }
+
+  .subDiv {
+      display: block;
+      
+  }
+
+  .divSelect {
+    float: right;
+    margin-top: -35px;
+  }
