@@ -1,62 +1,72 @@
-let numLines = 100
-let values = []
+/* 
+  TODO: 
+    - Refresh canvas after it's sorted and another algorithm is selected
+    - Add more algorithm options
+    - Refine design, perhaps a dropdown isn't the best design option
+    - Add options for random, nearly sorted, reversed, and few unique canvas
+  
+*/
 
+let values = []
+let states = []
+let w = 10
 // "loop variables"
 let index = 0
 let j = 0
+let bool = false
+// should add a boolean for when the list is sorted
+
 
 function setup() {
   var myCanvas = createCanvas(1000, 500)
   myCanvas.parent("canvas")
-  background(255, 0, 200)
-<<<<<<< HEAD
-  // frameRate(15);
-
-  for (let i = 0; i < width; i++) {
-    values[i] = random(height)
-=======
-  frameRate(20);
-
-  for(let i = 0; i < width; i++) {
-    //values[i] = random(height)
-    values[i] = noise(i/100)*height
->>>>>>> 0608013e91fbe49c64d87a598722047050ce6330
-  }
-}
-
-<<<<<<< HEAD
-
-=======
-  
->>>>>>> 0608013e91fbe49c64d87a598722047050ce6330
-function draw() {
   background(0, 0, 0)
+  frameRate(20);
+  values = new Array(floor(width / w))
 
-  stroke(155)
-  strokeWeight(4)
   for (let i = 0; i < values.length; i++) {
-    line(i, height, i, height - values[i])
-    //ellipse(i, height, i, height - values[i])
-  }
+    values[i] = random(height)
+    states[i] = -1
+    //values[i] = noise(i / 100) * height
 
-  // sorting methods
-
-  bubbleSort();
-  //insertionSort();
-}
-
-function bubbleSort() {
-  for (j = 0; j < values.length - index - 1; j++) {
-
-    let a = values[j]
-    let b = values[j + 1]
-
-    if (a > b) {
-      swap(values, j, j + 1)
-    }
   }
 }
 
+function draw() {
+
+  // colors
+  background(0, 0, 0)
+  fill(155)
+  stroke(0)
+
+  // picking random heights for the bars
+  generateBars()
+
+  // if divSelect == a certain algorithm 
+
+  let e = document.getElementById("divSelect") // getting the select element
+  let value = e.options[e.selectedIndex].value
+
+
+  // picking which sorting method to be used
+  switch (value) {
+    case "Insertion": insertionSort()
+      break
+    case "Bubble": bubbleSort()
+      break
+  }
+
+  
+
+}
+
+function generateBars() {
+  for (let i = 0; i < values.length; i++) {
+
+    rect(i * w, height - values[i], w, values[i])
+
+  }
+}
 
 // swaps two items in an array
 // helper function for bubbleSort
@@ -84,3 +94,17 @@ function insertionSort() {
     index++
   }
 }
+
+// bubble sort algorithm
+function bubbleSort() {
+  for (j = 0; j < values.length - index - 1; j++) {
+
+    let a = values[j]
+    let b = values[j + 1]
+
+    if (a > b) {
+      swap(values, j, j + 1)
+    }
+  }
+}
+

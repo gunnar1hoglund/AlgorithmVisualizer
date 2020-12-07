@@ -5,7 +5,7 @@ html, body {
   
   body {
     margin: 0;
-    display: flex;
+    display: grid;
   
     /* This centers our sketch horizontally. */
     justify-content: center;
@@ -19,7 +19,7 @@ html, body {
       
   }
 
-  .divSelect {
+  #divSelect {
     float: right;
     margin-top: -35px;
   }
