@@ -11,7 +11,7 @@ let values = []
 let states = []
 let w = 10
 // "loop variables"
-let index = 0
+let index = 0 
 let j = 0
 let bool = false
 // should add a boolean for when the list is sorted
